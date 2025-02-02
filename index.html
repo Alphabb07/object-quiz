@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+<body>
+    <div class="container">
+        <form action="">
+            <div class="questionNumber"></div>
+            <div class="questionText"></div>
+            <input type="text" name="answer" id="answer">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        let quiz = [
+            {
+                "ndomanda": "1",
+                "testo": "Qual e' il cibo preferito del prof?",
+                "rispostagiusta": "orsetti gommosi",
+                "rispostautente": ""
+            },
+            {
+                "ndomanda": "2",
+                "testo": "Qual'è il servizio di hosting preferito di antonio?",
+                "rispostagiusta": "Aruba",
+                "rispostautente": ""
+            },
+            {
+                "ndomanda": "3",
+                "testo": "La squadra piu forte d'Italia?",
+                "rispostagiusta": "Inter",
+                "rispostautente": ""
+            },
+            {
+                "ndomanda": "4",
+                "testo": "Chi verrà bocciato quest'anno?",
+                "rispostagiusta": "boh spero che non viene bocciato nessuno",
+                "rispostautente": ""
+            }
+        ];
+
+        window.addEventListener("load", function () {
+            let currentQuestion = 0;
+            let ndomanda = document.querySelector(".questionNumber");
+            let domanda = document.querySelector(".questionText");
+
+            function updateQuestion() {
+                let obj = quiz[currentQuestion];
+                ndomanda.innerHTML = obj["ndomanda"];
+                domanda.innerHTML = obj["testo"];
+            }
+
+            updateQuestion();
+
+            let form = document.querySelector("form");
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+                let rispostautente = document.querySelector("#answer").value;
+                quiz[currentQuestion]["rispostautente"] = rispostautente;
+
+                currentQuestion += 1;
+
+                if (currentQuestion < quiz.length) {
+                    updateQuestion();
+                } else {
+                    console.log("Quiz finito");
+                    calcolapunteggio();
+                }
+            });
+        });
+
+        function calcolapunteggio() {
+            let punteggio = 0;
+            quiz.forEach(q => {
+                if (q.rispostautente.toLowerCase() === q.rispostagiusta.toLowerCase()) {
+                    punteggio += 1;
+                }
+            });
+            console.log("Punteggio: " + punteggio);
+        }
+    </script>
+</body>
+</html>
