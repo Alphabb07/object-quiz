@@ -81,26 +81,30 @@
 
 
 
-            }
+            },
         ];
-        window.addEventListener("load", function() {
+
+        window.addEventListener('load', function() {
             let currentQuestion = 0;
             let ndomanda = document.querySelector(".questionNumber")
             let domanda = document.querySelector(".questionText")
             let obj = quiz[currentQuestion]
-            ndomanda.innerHTML = obj["testo"]
+            ndomanda.innerHTML = obj["ndomanda"]
+            domanda.innerHTML = obj["testo"]
             let form = document.querySelector("form")
             form.addEventListener("submit", function(e){
                 e.preventDefault()
                 let rispostautente = document.querySelector("[name=answer]")
                 obj["rispostautente"] = rispostautente.value 
                 currentQuestion = currentQuestion + 1
-                if () {
-                    obj = quiz[currentQuestion]
+                    let obj = quiz[currentQuestion]
                     ndomanda.innerHTML = obj["ndomanda"]
                     domanda.innerHTML = obj["text"]
-                } else {
                     calcolapunteggio()
-                }
-            })
+                    if(currentQuestion == quiz.length){
+                        console.log("Hai finito il quiz!")
+                        }
+                        })
         })
+         
+        </script>
