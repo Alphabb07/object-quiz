@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
@@ -40,48 +41,66 @@
                 "testo": "Chi verrà bocciato quest'anno?",
                 "rispostagiusta": "boh spero che non viene bocciato nessuno",
                 "rispostautente": ""
+            },
+            {
+                "ndomanda": "5",
+                "testo": "Qual è il colore preferito di antonio?",
+                "rispostagiusta": "azzurro",
+                "rispostautente":""
+            },
+            {
+                "ndomanda":"6",
+                "testo":"Dove si trovano gli orsi polari?"
+                ,
+                "rispostagiusta":"in Groenlandia",
+                "rispostautente":""
+            },
+            {
+                "ndomanda": "7",
+                "testo": "Antonio preferisce il dolce o il salato?",
+                "rispostagiusta": "salato",
+                "rispostautente":""
+                },
+                {
+                    "ndomanda": "8",
+                    "testo": "Qual'è il cibo preferito di Antonio?",
+                    "rispostagiusta": "Orsetti gommosi",
+                    "rispostautente":""
+                    },
+                    {
+                        "ndomanda": "9",
+                        "testo": "In un incrocio si da precedenza a:",
+                        "rispostagiusta": "destra",
+                        "rispostautente":"",
+                        },
+                        {
+                            "ndomanda": "10",
+                            "testo": "Qual'è il limite massimo in una strada extraurbana principale?",
+                            "rispostagiusta":"110",
+                            "rispostautente":"",
+
+
+
             }
         ];
-
-        window.addEventListener("load", function () {
+        window.addEventListener("load", function() {
             let currentQuestion = 0;
-            let ndomanda = document.querySelector(".questionNumber");
-            let domanda = document.querySelector(".questionText");
-
-            function updateQuestion() {
-                let obj = quiz[currentQuestion];
-                ndomanda.innerHTML = obj["ndomanda"];
-                domanda.innerHTML = obj["testo"];
-            }
-
-            updateQuestion();
-
-            let form = document.querySelector("form");
-            form.addEventListener("submit", function (e) {
-                e.preventDefault();
-                let rispostautente = document.querySelector("#answer").value;
-                quiz[currentQuestion]["rispostautente"] = rispostautente;
-
-                currentQuestion += 1;
-
-                if (currentQuestion < quiz.length) {
-                    updateQuestion();
+            let ndomanda = document.querySelector(".questionNumber")
+            let domanda = document.querySelector(".questionText")
+            let obj = quiz[currentQuestion]
+            ndomanda.innerHTML = obj["testo"]
+            let form = document.querySelector("form")
+            form.addEventListener("submit", function(e){
+                e.preventDefault()
+                let rispostautente = document.querySelector("[name=answer]")
+                obj["rispostautente"] = rispostautente.value 
+                currentQuestion = currentQuestion + 1
+                if () {
+                    obj = quiz[currentQuestion]
+                    ndomanda.innerHTML = obj["ndomanda"]
+                    domanda.innerHTML = obj["testo"]
                 } else {
-                    console.log("Quiz finito");
-                    calcolapunteggio();
+                    calcolapunteggio()
                 }
-            });
-        });
-
-        function calcolapunteggio() {
-            let punteggio = 0;
-            quiz.forEach(q => {
-                if (q.rispostautente.toLowerCase() === q.rispostagiusta.toLowerCase()) {
-                    punteggio += 1;
-                }
-            });
-            console.log("Punteggio: " + punteggio);
-        }
-    </script>
-</body>
-</html>
+            })
+        })
