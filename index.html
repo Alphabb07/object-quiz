@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
+    <title>Object-quiz</title>
 </head>
 <body>
     <div class="container">
@@ -12,7 +12,7 @@
             <div class="questionNumber"></div>
             <div class="questionText"></div>
             <input type="text" name="answer" id="answer">
-            <button type="submit">Submit</button>
+            <button type="submit">Invia</button>
         </form>
     </div>
 
@@ -98,7 +98,7 @@
                 if () {
                     obj = quiz[currentQuestion]
                     ndomanda.innerHTML = obj["ndomanda"]
-                    domanda.innerHTML = obj["testo"]
+                    domanda.innerHTML = obj["text"]
                 } else {
                     calcolapunteggio()
                 }
