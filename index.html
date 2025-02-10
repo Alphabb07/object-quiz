@@ -91,7 +91,7 @@
         ];
 
         let currentQuestion = 0;
-        let punteggio; //da modificare
+        let punteggio = 0;
         let ndomanda = document.querySelector(".questionNumber");
         let domanda = document.querySelector(".questionText");
         let answerInput = document.querySelector("#answer");
@@ -115,6 +115,9 @@
 
             if (currentQuestion < quiz.length) {
                 quiz[currentQuestion]["rispostautente"] = answerInput.value;
+                if(quiz[currentQuestion]["rispostautente"] == quiz[currentQuestion]["rispostagiusta"]){
+                    punteggio++;
+                }
                 currentQuestion++;
                 showQuestion();
             }
