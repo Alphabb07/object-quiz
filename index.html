@@ -81,13 +81,7 @@
                 "rispostautente":"",
                  "punteggio": 1
             },
-            {
-                "ndomanda": "10",
-                "testo": "Qual'è il limite massimo in una strada extraurbana principale?",
-                "rispostagiusta":"110",
-                "rispostautente":"",
-                 "punteggio": 1
-            },
+            
         ];
 
         let currentQuestion = 0;
@@ -113,7 +107,7 @@
         form.addEventListener("submit", function(e) {
             e.preventDefault(); 
 
-            if (currentQuestion < quiz.length) {
+            if (currentQuestion <= quiz.length) {
                 quiz[currentQuestion]["rispostautente"] = answerInput.value;
                 if(quiz[currentQuestion]["rispostautente"] == quiz[currentQuestion]["rispostagiusta"]){
                     punteggio++;
