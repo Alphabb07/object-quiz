@@ -23,73 +23,75 @@
                 "testo": "Qual e' il cibo preferito del prof?",
                 "rispostagiusta": "orsetti gommosi",
                 "rispostautente": "",
-                "punteggio": "1"
+                "punteggio": 1
             },
             {
                 "ndomanda": "2",
                 "testo": "Qual'è il servizio di hosting preferito di antonio?",
                 "rispostagiusta": "Aruba",
                 "rispostautente": "",
-                 "punteggio": "1"
+                 "punteggio": 1
             },
             {
                 "ndomanda": "3",
                 "testo": "La squadra piu forte d'Italia?",
                 "rispostagiusta": "Inter",
                 "rispostautente": "",
-                 "punteggio": "1"
+                 "punteggio": 1
             },
             {
                 "ndomanda": "4",
                 "testo": "Chi verrà bocciato quest'anno?",
                 "rispostagiusta": "boh spero che non viene bocciato nessuno",
                 "rispostautente": "",
-                 "punteggio": "1"
+                 "punteggio": 1
             },
             {
                 "ndomanda": "5",
                 "testo": "Qual è il colore preferito di antonio?",
                 "rispostagiusta": "azzurro",
                 "rispostautente":"",
-                 "punteggio": "1"
+                 "punteggio": 1
             },
             {
                 "ndomanda":"6",
                 "testo":"Dove si trovano gli orsi polari?",
                 "rispostagiusta":"in Groenlandia",
-                "rispostautente":""
+                "rispostautente":"",
+                "punteggio":1
             },
             {
                 "ndomanda": "7",
                 "testo": "Antonio preferisce il dolce o il salato?",
                 "rispostagiusta": "salato",
                 "rispostautente":"",
-                 "punteggio": "1"
+                 "punteggio": 1
             },
             {
                 "ndomanda": "8",
                 "testo": "Qual'è il cibo preferito di Antonio?",
                 "rispostagiusta": "Orsetti gommosi",
                 "rispostautente":"",
-                 "punteggio": "1"
+                 "punteggio": 1
             },
             {
                 "ndomanda": "9",
                 "testo": "In un incrocio si da precedenza a:",
                 "rispostagiusta": "destra",
                 "rispostautente":"",
-                 "punteggio": "1"
+                 "punteggio": 1
             },
             {
                 "ndomanda": "10",
                 "testo": "Qual'è il limite massimo in una strada extraurbana principale?",
                 "rispostagiusta":"110",
                 "rispostautente":"",
-                 "punteggio": "1"
+                 "punteggio": 1
             },
         ];
 
         let currentQuestion = 0;
+        let punteggio; //da modificare
         let ndomanda = document.querySelector(".questionNumber");
         let domanda = document.querySelector(".questionText");
         let answerInput = document.querySelector("#answer");
@@ -98,7 +100,6 @@
         function showQuestion() {
             if (currentQuestion < quiz.length) {
                 let obj = quiz[currentQuestion];
-                let punteggio; //da modificare
                 ndomanda.innerHTML = "Domanda " + obj["ndomanda"];
                 domanda.innerHTML = obj["testo"];
                 answerInput.value = "";
