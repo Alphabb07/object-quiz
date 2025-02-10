@@ -12,7 +12,7 @@
             <div class="questionNumber"></div>
             <div class="questionText"></div>
             <input type="text" name="answer" id="answer">
-            <button type="submit">Invia</button>
+            <button type="submit" id="bottone">Invia</button>
         </form>
     </div>
 
@@ -92,14 +92,14 @@
             ndomanda.innerHTML = obj["ndomanda"]
             domanda.innerHTML = obj["testo"]
             let form = document.querySelector("form")
-            form.addEventListener("submit", function(e){
+            bottone.addEventListener("submit", function(){
                 e.preventDefault()
                 let rispostautente = document.querySelector("[name=answer]")
-                 obj ["rispostautente"] = rispostautente.value 
+                obj ["rispostautente"] = rispostautente.value 
                 currentQuestion = currentQuestion + 1
                     let obj = quiz[currentQuestion]
                     ndomanda.innerHTML = obj["ndomanda"]
-                    domanda.innerHTML = obj["text"]
+                    domanda.innerHTML = obj["testo"]
                     calcolapunteggio()
                     if(currentQuestion == quiz.length){
                         console.log("Hai finito il quiz!")
