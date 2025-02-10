@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <form action="">
+        <form id="quizForm">
             <div class="questionNumber"></div>
             <div class="questionText"></div>
             <input type="text" name="answer" id="answer">
@@ -22,36 +22,40 @@
                 "ndomanda": "1",
                 "testo": "Qual e' il cibo preferito del prof?",
                 "rispostagiusta": "orsetti gommosi",
-                "rispostautente": ""
+                "rispostautente": "",
+                "punteggio": "1"
             },
             {
                 "ndomanda": "2",
                 "testo": "Qual'è il servizio di hosting preferito di antonio?",
                 "rispostagiusta": "Aruba",
-                "rispostautente": ""
+                "rispostautente": "",
+                 "punteggio": "1"
             },
             {
                 "ndomanda": "3",
                 "testo": "La squadra piu forte d'Italia?",
                 "rispostagiusta": "Inter",
-                "rispostautente": ""
+                "rispostautente": "",
+                 "punteggio": "1"
             },
             {
                 "ndomanda": "4",
                 "testo": "Chi verrà bocciato quest'anno?",
                 "rispostagiusta": "boh spero che non viene bocciato nessuno",
-                "rispostautente": ""
+                "rispostautente": "",
+                 "punteggio": "1"
             },
             {
                 "ndomanda": "5",
                 "testo": "Qual è il colore preferito di antonio?",
                 "rispostagiusta": "azzurro",
-                "rispostautente":""
+                "rispostautente":"",
+                 "punteggio": "1"
             },
             {
                 "ndomanda":"6",
-                "testo":"Dove si trovano gli orsi polari?"
-                ,
+                "testo":"Dove si trovano gli orsi polari?",
                 "rispostagiusta":"in Groenlandia",
                 "rispostautente":""
             },
@@ -59,52 +63,63 @@
                 "ndomanda": "7",
                 "testo": "Antonio preferisce il dolce o il salato?",
                 "rispostagiusta": "salato",
-                "rispostautente":""
-                },
-                {
-                    "ndomanda": "8",
-                    "testo": "Qual'è il cibo preferito di Antonio?",
-                    "rispostagiusta": "Orsetti gommosi",
-                    "rispostautente":""
-                    },
-                    {
-                        "ndomanda": "9",
-                        "testo": "In un incrocio si da precedenza a:",
-                        "rispostagiusta": "destra",
-                        "rispostautente":"",
-                        },
-                        {
-                            "ndomanda": "10",
-                            "testo": "Qual'è il limite massimo in una strada extraurbana principale?",
-                            "rispostagiusta":"110",
-                            "rispostautente":"",
-
-
-
-            }
+                "rispostautente":"",
+                 "punteggio": "1"
+            },
+            {
+                "ndomanda": "8",
+                "testo": "Qual'è il cibo preferito di Antonio?",
+                "rispostagiusta": "Orsetti gommosi",
+                "rispostautente":"",
+                 "punteggio": "1"
+            },
+            {
+                "ndomanda": "9",
+                "testo": "In un incrocio si da precedenza a:",
+                "rispostagiusta": "destra",
+                "rispostautente":"",
+                 "punteggio": "1"
+            },
+            {
+                "ndomanda": "10",
+                "testo": "Qual'è il limite massimo in una strada extraurbana principale?",
+                "rispostagiusta":"110",
+                "rispostautente":"",
+                 "punteggio": "1"
+            },
         ];
 
-        window.addEventListener('load', function() {
-            let currentQuestion = 0;
-            let ndomanda = document.querySelector(".questionNumber")
-            let domanda = document.querySelector(".questionText")
-            let obj = quiz[currentQuestion]
-            ndomanda.innerHTML = obj["ndomanda"]
-            domanda.innerHTML = obj["testo"]
-            let form = document.querySelector("form")
-            bottone.addEventListener("submit", function(){
-                e.preventDefault()
-                let rispostautente = document.querySelector("[name=answer]")
-                obj ["rispostautente"] = rispostautente.value 
-                currentQuestion = currentQuestion + 1
-                    let obj = quiz[currentQuestion]
-                    ndomanda.innerHTML = obj["ndomanda"]
-                    domanda.innerHTML = obj["testo"]
-                    calcolapunteggio()
-                    if(currentQuestion == quiz.length){
-                        console.log("Hai finito il quiz!")
-                        }
-                        })
-        })
-         
-        </script>
+        let currentQuestion = 0;
+        let ndomanda = document.querySelector(".questionNumber");
+        let domanda = document.querySelector(".questionText");
+        let answerInput = document.querySelector("#answer");
+        let form = document.querySelector("#quizForm");
+
+        function showQuestion() {
+            if (currentQuestion < quiz.length) {
+                let obj = quiz[currentQuestion];
+                let punteggio; //da modificare
+                ndomanda.innerHTML = "Domanda " + obj["ndomanda"];
+                domanda.innerHTML = obj["testo"];
+                answerInput.value = "";
+            } else {
+                ndomanda.innerHTML = "Quiz Terminato!, Il tuo punteggio è di " +punteggio;
+                answerInput.style.display = "none";
+                document.querySelector("#bottone");
+            }
+        }
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault(); 
+
+            if (currentQuestion < quiz.length) {
+                quiz[currentQuestion]["rispostautente"] = answerInput.value;
+                currentQuestion++;
+                showQuestion();
+            }
+        });
+
+        window.addEventListener('load', showQuestion);
+    </script>
+</body>
+</html>
