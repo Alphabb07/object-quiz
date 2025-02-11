@@ -10,8 +10,10 @@
     <div class="container">
         <form id="quizForm">
             <div class="questionNumber"></div>
+            <br>
             <div class="questionText"></div>
             <input type="text" name="answer" id="answer">
+            <br>
             <button type="submit" id="bottone">Invia</button>
         </form>
     </div>
@@ -41,8 +43,8 @@
             },
             {
                 "ndomanda": "4",
-                "testo": "Chi verrà bocciato quest'anno?",
-                "rispostagiusta": "boh spero che non viene bocciato nessuno",
+                "testo": "Quanto fa 1+1?",
+                "rispostagiusta": "2",
                 "rispostautente": "",
                  "punteggio": 1
             },
@@ -70,7 +72,7 @@
             {
                 "ndomanda": "8",
                 "testo": "Qual'è il cibo preferito di Antonio?",
-                "rispostagiusta": "Orsetti gommosi",
+                "rispostagiusta": "panino ipercalorico con cheddar e hamurger dop",
                 "rispostautente":"",
                  "punteggio": 1
             },
@@ -99,6 +101,7 @@
                 answerInput.value = "";
             } else {
                 ndomanda.innerHTML = "Quiz Terminato!, Il tuo punteggio è di " +punteggio;
+                domanda.innerHTML = "";
                 answerInput.style.display = "none";
                 document.querySelector("#bottone");
             }
